@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using RPG.Movement;
+using RPG.Core;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour
+    public class Fighter : MonoBehaviour, IAction
     {
 
         [SerializeField] float weaponRange = 2f;
@@ -19,11 +20,13 @@ namespace RPG.Combat
               return ;
             if(target != null && !GetIsInRange())
             {
+                print("Moving into combat");
                 GetComponent<Mover>().MoveTo(target.position);
             }
             else
             {
-                GetComponent<Mover>().Stop();
+                print("Pew Pew");
+                GetComponent<Mover>().Cancel();
             }
 
         }
@@ -35,7 +38,7 @@ namespace RPG.Combat
 
         public void Attack(CombatTarget combatTarget)
         {
-            print("Avast, you are attacked.");
+            GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.transform;
         }
 
