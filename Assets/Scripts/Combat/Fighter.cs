@@ -11,24 +11,46 @@ namespace RPG.Combat
     {
 
         [SerializeField] float weaponRange = 2f;
+        [SerializeField] float timeBetweenAttacks = 2f;
+        [SerializeField] float weaponDamage = 5f;
 
         Transform target;
+        float timeSinceLastAttack = 0;
 
         private void Update()
         {
+            timeSinceLastAttack += Time.deltaTime;
+
             if(target == null)
               return ;
             if(target != null && !GetIsInRange())
             {
-                print("Moving into combat");
+                // print("Moving into combat");
                 GetComponent<Mover>().MoveTo(target.position);
             }
             else
             {
-                print("Pew Pew");
+                // print("Pew Pew");
                 GetComponent<Mover>().Cancel();
+                if(timeSinceLastAttack > timeBetweenAttacks)
+                  AttackBehaviour();
             }
 
+        }
+
+        private void AttackBehaviour()
+        {
+            // This will trigger the Hit() event
+            GetComponent<Animator>().SetTrigger("attack");
+            timeSinceLastAttack = 0;
+
+        }
+
+        // Animation Event
+        void Hit()
+        {
+            Health healthComponent = target.GetComponent<Health>();
+            healthComponent.TakeDamage(weaponDamage);
         }
 
         private bool GetIsInRange()
@@ -46,5 +68,7 @@ namespace RPG.Combat
         {
             target = null;
         }
+
+
     }
 }
