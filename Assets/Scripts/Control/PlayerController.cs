@@ -22,7 +22,7 @@ namespace RPG.Control
               return;
             if(InteractWithMovement())
               return;
-            print("Nothing to do");
+            // print("Nothing to do");
         }
 
         private bool InteractWithCombat()
