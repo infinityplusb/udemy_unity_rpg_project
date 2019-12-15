@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using RPG.Core;
 using RPG.Movement;
 using RPG.Combat;
 
@@ -18,10 +19,13 @@ namespace RPG.Control
         // Update is called once per frame
         void Update()
         {
-            if(InteractWithCombat())
-              return;
-            if(InteractWithMovement())
-              return;
+            if(!GetComponent<Health>().IsDead() )
+            {
+                if(InteractWithCombat())
+                  return;
+                if(InteractWithMovement())
+                  return;
+            }
             // print("Nothing to do");
         }
 

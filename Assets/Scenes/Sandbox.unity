@@ -744,12 +744,12 @@ PrefabInstance:
     - target: {fileID: 7367980867579700070, guid: 3bdf3879292332cd3824e3ae6dc5bb15,
         type: 3}
       propertyPath: m_AngularSpeed
-      value: 200
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 7367980867579700070, guid: 3bdf3879292332cd3824e3ae6dc5bb15,
         type: 3}
       propertyPath: m_Acceleration
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bdf3879292332cd3824e3ae6dc5bb15, type: 3}
