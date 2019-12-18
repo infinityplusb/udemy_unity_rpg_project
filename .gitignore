@@ -1,3 +1,4 @@
 
 *.meta
-Library/Artifacts/
+Library/Artifacts
+Library/ScriptAssemblies
