@@ -30,7 +30,7 @@ namespace RPG.Combat
             if(target != null && !GetIsInRange())
             {
                 // print("Moving into combat");
-                GetComponent<Mover>().MoveTo(target.transform.position);
+                GetComponent<Mover>().MoveTo(target.transform.position, 1f);
             }
             else
             {
